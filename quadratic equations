@@ -1,0 +1,104 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPJe0CRhcksCBP5pnmHeMA9",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/luckyakhiljr/quadratic_weather_modeling/blob/main/quadratic%20equations\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "y9xxqQr-d66j",
+        "outputId": "d2fef40e-d9c5-4c8e-e532-e25643a41e77"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The LCM of 12 and 18 is 36.\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 1  Hardcoding the variables\n",
+        "\n",
+        "import math\n",
+        "\n",
+        "def calculate_lcm(a, b):\n",
+        "    if a == 0 or b == 0:\n",
+        "        return 0\n",
+        "    gcd = math.gcd(a, b)\n",
+        "    lcm = abs(a * b) // gcd\n",
+        "    return lcm\n",
+        "\n",
+        "\n",
+        "num1 = 12\n",
+        "num2 = 18\n",
+        "result = calculate_lcm(num1, num2)\n",
+        "print(f\"The LCM of {num1} and {num2} is {result}.\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# quadratic_weather_modeling\n",
+        "import math\n",
+        "\n",
+        "a = 1\n",
+        "b = -3\n",
+        "c = 2\n",
+        "\n",
+        "d = b**2 - 4*a*c\n",
+        "if d >= 0:\n",
+        "    x1 = (-b + math.sqrt(d)) / (2*a)\n",
+        "    x2 = (-b - math.sqrt(d)) / (2*a)\n",
+        "    print(\"Roots are:\", x1, \"and\", x2)\n",
+        "else:\n",
+        "    print(\"No real roots\")"
+      ],
+      "metadata": {
+        "id": "1s5GkdXXauyF",
+        "outputId": "97719809-43a8-497e-b351-449ed3d1202e",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Roots are: 2.0 and 1.0\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
