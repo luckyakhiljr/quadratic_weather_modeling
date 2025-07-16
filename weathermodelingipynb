@@ -1,0 +1,246 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPeUsgAOnaCuftLKaF/jnZn",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/luckyakhiljr/quadratic_weather_modeling/blob/main/weathermodelingipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "y9xxqQr-d66j",
+        "outputId": "d2fef40e-d9c5-4c8e-e532-e25643a41e77"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The LCM of 12 and 18 is 36.\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 1  Hardcoding the variables\n",
+        "\n",
+        "import math\n",
+        "\n",
+        "def calculate_lcm(a, b):\n",
+        "    if a == 0 or b == 0:\n",
+        "        return 0\n",
+        "    gcd = math.gcd(a, b)\n",
+        "    lcm = abs(a * b) // gcd\n",
+        "    return lcm\n",
+        "\n",
+        "\n",
+        "num1 = 12\n",
+        "num2 = 18\n",
+        "result = calculate_lcm(num1, num2)\n",
+        "print(f\"The LCM of {num1} and {num2} is {result}.\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# quadratic_weather_modeling\n",
+        "import math\n",
+        "\n",
+        "a = 1\n",
+        "b = -3\n",
+        "c = 2\n",
+        "\n",
+        "d = b**2 - 4*a*c\n",
+        "if d >= 0:\n",
+        "    x1 = (-b + math.sqrt(d)) / (2*a)\n",
+        "    x2 = (-b - math.sqrt(d)) / (2*a)\n",
+        "    print(\"Roots are:\", x1, \"and\", x2)\n",
+        "else:\n",
+        "    print(\"No real roots\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1s5GkdXXauyF",
+        "outputId": "97719809-43a8-497e-b351-449ed3d1202e"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Roots are: 2.0 and 1.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "def quadratic_solution(a, b, c):\n",
+        "    if a == 0:\n",
+        "        return \"Not a quadratic equation\"\n",
+        "    discriminant = b**2 - 4*a*c\n",
+        "    if discriminant < 0:\n",
+        "        return \"No real roots\"\n",
+        "    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n",
+        "    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n",
+        "    return round(root1, 2), round(root2, 2)\n",
+        "\n",
+        "def read_coefficients(filename):\n",
+        "    try:\n",
+        "        with open(filename, 'r') as file:\n",
+        "            for line in file:\n",
+        "                try:\n",
+        "                    a, b, c = map(float, line.split())\n",
+        "                    roots = quadratic_solution(a, b, c)\n",
+        "                    print(f\"Coefficients: a={a}, b={b}, c={c} => Roots: {roots}\")\n",
+        "                except ValueError:\n",
+        "                    print(f\"Invalid line: {line.strip()} — Skipping.\")\n",
+        "    except Exception as e:\n",
+        "        print(f\"Error reading file: {e}\")\n",
+        "\n",
+        "# Read from a file\n",
+        "read_coefficients('input.txt')\n",
+        "\n",
+        "# Take keyboard input\n",
+        "try:\n",
+        "    a = float(input(\"Enter coefficient a: \"))\n",
+        "    b = float(input(\"Enter coefficient b: \"))\n",
+        "    c = float(input(\"Enter coefficient c: \"))\n",
+        "    roots = quadratic_solution(a, b, c)\n",
+        "    print(\"Roots:\", roots)\n",
+        "except ValueError:\n",
+        "    print(\"Invalid input. Please enter numeric values.\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9YfaT_noctiv",
+        "outputId": "466e026a-1ed5-42ca-b1a0-a75ef71147dc"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Error reading file: [Errno 2] No such file or directory: 'input.txt'\n",
+            "Enter coefficient a: 20\n",
+            "Enter coefficient b: 30\n",
+            "Enter coefficient c: 40\n",
+            "Roots: No real roots\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# quadratic_stage1.py\n",
+        "import math\n",
+        "\n",
+        "# Hardcoded coefficients\n",
+        "a = 1\n",
+        "b = -3\n",
+        "c = 2\n",
+        "\n",
+        "discriminant = b**2 - 4*a*c\n",
+        "\n",
+        "if discriminant < 0:\n",
+        "    print(\"No real roots\")\n",
+        "else:\n",
+        "    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n",
+        "    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n",
+        "    print(\"Roots are:\", root1, root2)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "qFTZt7Vtcy9v",
+        "outputId": "63ceff78-6582-4ffb-ca57-6a0c00a8b98e"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Roots are: 2.0 1.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# quadratic_stage2.py\n",
+        "import math\n",
+        "\n",
+        "a = float(input(\"Enter value of a: \"))\n",
+        "b = float(input(\"Enter value of b: \"))\n",
+        "c = float(input(\"Enter value of c: \"))\n",
+        "\n",
+        "discriminant = b**2 - 4*a*c\n",
+        "\n",
+        "if discriminant < 0:\n",
+        "    print(\"No real roots\")\n",
+        "else:\n",
+        "    root1 = (-b + math.sqrt(discriminant)) / (2*a)\n",
+        "    root2 = (-b - math.sqrt(discriminant)) / (2*a)\n",
+        "    print(\"Roots are:\", root1, root2)\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7jGBO8_9d6DW",
+        "outputId": "7c5174a3-286c-4e79-a2c9-69bfa582b8ce"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter value of a: 1\n",
+            "Enter value of b: -1\n",
+            "Enter value of c: 6\n",
+            "No real roots\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
